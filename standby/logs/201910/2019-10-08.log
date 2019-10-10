@@ -1,3 +1,0 @@
-[INFO ] 2019-10-08 17:37:14.624 [main] webapi - 2 Spring WebApplicationInitializers detected on classpath
-[INFO ] 2019-10-08 17:37:14.700 [main] webapi - Initializing Spring root WebApplicationContext
-[INFO ] 2019-10-08 17:37:15.369 [main] webapi - Initializing Spring FrameworkServlet 'dispatcher'
