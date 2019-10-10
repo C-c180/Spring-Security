@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.archiva.redback.components.cache:spring-cache-ehcache:2.2">
+    <CLASSES>
+      <root url="jar://D:/Software/Repository/caches/modules-2/files-2.1/org.apache.archiva.redback.components.cache/spring-cache-ehcache/2.2/6bf4e32b4697a493d6188f2909d5e63389fa0612/spring-cache-ehcache-2.2.jar!/" />
+      <root url="jar://D:/java_web_project/gradle-3.0-all/repository/caches/modules-2/files-2.1/org.apache.archiva.redback.components.cache/spring-cache-ehcache/2.2/6bf4e32b4697a493d6188f2909d5e63389fa0612/spring-cache-ehcache-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://D:/Software/Repository/caches/modules-2/files-2.1/org.apache.archiva.redback.components.cache/spring-cache-ehcache/2.2/e12b071faf85ac9c6204082f2b12c3335acbf021/spring-cache-ehcache-2.2-sources.jar!/" />
+      <root url="jar://D:/java_web_project/gradle-3.0-all/repository/caches/modules-2/files-2.1/org.apache.archiva.redback.components.cache/spring-cache-ehcache/2.2/e12b071faf85ac9c6204082f2b12c3335acbf021/spring-cache-ehcache-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

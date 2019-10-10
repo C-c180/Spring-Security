@@ -1,0 +1,92 @@
+group 'com.dfsx.standby'
+version '1.0.0'
+
+//println "project name: ${project.name}"
+//println "build directory: ${project.buildDir}"
+
+task wrapper(type: Wrapper) {
+    distributionUrl = "http://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8 //bytecode generated level
+mainClassName = 'com.dfsx.standby.Application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.eclipse.jetty.aggregate:jetty-all:$jettyVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+    compile "org.springframework:spring-webmvc:$springVersion" //spring mvc framework
+    compile "org.apache.commons:commons-dbcp2:$dbcp2Version" //db connection pool
+    compile "org.mybatis:mybatis:$mybatisVersion" //Mybatis ORM
+    compile "org.mybatis:mybatis-spring:$mybatisSpringVersion" //Mybatis Spring bridge
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion" //json jackson library
+    compile "org.slf4j:slf4j-api:$slf4jVersion" //logging interface definition
+    compile "commons-logging:commons-logging:$jclVersion" //common logging interface
+    compile "org.apache.logging.log4j:log4j-api:$log4j2Version" //log4j 2
+    compile "org.apache.logging.log4j:log4j-core:$log4j2Version" //log4j 2
+    compile "org.apache.logging.log4j:log4j-jcl:$log4j2Version" //commons-logging over log4j 2
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4j2Version" //slf4j over log4j 2
+    compile "org.apache.archiva.redback.components.cache:spring-cache-ehcache:$ehcacheVersion"
+    compile "mysql:mysql-connector-java:$mysqlVersion"
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.3.0.Final'
+    compile group: 'cn.hutool', name: 'hutool-all', version: '4.6.6'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.13.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.13.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.13.RELEASE'
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
+    compile group: 'com.github.pagehelper', name: 'pagehelper', version: '5.1.8'
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Manifest-Version': '1.0'
+        attributes "Implementation-Title": project.name
+        attributes "Implementation-Version": version
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+sourceSets {
+    main {
+        compileClasspath += files('config')
+    }
+}
+
+startScripts {
+    unixStartScriptGenerator.template = resources.text.fromFile(file('resources/unixStartScript.txt'))
+    windowsStartScriptGenerator.template = resources.text.fromFile(file('resources/windowsStartScript.txt'))
+}
+
+distributions {
+    main {
+        contents {
+            from 'README.txt'
+            from('config') {
+                into('config')
+            }
+        }
+    }
+}

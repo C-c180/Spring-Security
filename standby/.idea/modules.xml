@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/standby.iml" filepath="$PROJECT_DIR$/.idea/modules/standby.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/standby_main.iml" filepath="$PROJECT_DIR$/.idea/modules/standby_main.iml" group="standby" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/standby_test.iml" filepath="$PROJECT_DIR$/.idea/modules/standby_test.iml" group="standby" />
+    </modules>
+  </component>
+</project>

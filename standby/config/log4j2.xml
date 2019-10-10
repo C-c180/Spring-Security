@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+    <Properties>
+        <Property name="log.home">logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n">
+            </PatternLayout>
+        </Console>
+        <RollingFile name="File-Appender" fileName="${sys:log.home}/run.log" filePattern="${sys:log.home}/%d{yyyyMM}/%d{yyy-MM-dd}.log">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n">
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </Policies>
+            <!--keep up to 30 rolling files be deleting them-->
+            <DefaultRolloverStrategy max="30" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.dfsx" level="error" additivity="false">
+            <AppenderRef ref="File-Appender" level="error" />
+        </Logger>
+        <!--<Logger name="org.apache.ibatis" level="debug" additivity="false">-->
+            <!--<AppenderRef ref="Console-Appender"/>-->
+        <!--</Logger>-->
+        <Root level="warn">
+            <AppenderRef ref="Console-Appender" />
+        </Root>
+    </Loggers>
+</Configuration>
